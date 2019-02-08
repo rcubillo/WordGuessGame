@@ -8,6 +8,8 @@ var answerArray;
 
 // to store the letters that we already guessed
 var guessedletters = [];
+var correctwords = [];
+var wrongword = [];
 
 //array wiht a list of words
 var words = [
@@ -18,16 +20,15 @@ var words = [
     "chino"
 ];
 
-
 //Selecting a random word from my array "word"
-var choosingwords = words[Math.floor(Math.random() * words.length)];
-console.log(choosingwords);
+var choosenwords = words[Math.floor(Math.random() * words.length)];
+console.log(choosenwords);
 
 
 
 //this function will change the letter to underscore depending of the lenght of the word.
 function starting() {
-    for (var i = 0; i < choosingwords.length; i++) {
+    for (var i = 0; i < choosenwords.length; i++) {
         guessedletters.push(' _ ');
     }
     return guessedletters;
@@ -35,13 +36,24 @@ function starting() {
 console.log(starting());
 
 
-// typing a letter and capturing it on a var.
-
-
+// typing a letter and capturing into  a var (userskey).
 document.onkeyup = function(event){
     var userskey = event.key;
-    console.log(userskey);
+
+    // Loop so that when user types a letter it will clasify if the letter is from the choosen word it will
+    // get store in an array, if not it will be assign into another array.
+    if(choosenwords.indexOf(userskey) > -1){
+        correctwords.push(userskey);
+        console.log(correctwords);
+    } else {
+        wrongword.push(userskey)
+        console.log(wrongword);
+    }
 }
+
+
+
+
 
 
 
