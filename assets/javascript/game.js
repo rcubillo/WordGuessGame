@@ -36,14 +36,12 @@ console.log(choosenwords);
 function starting() {
     for (var i = 0; i < choosenwords.length; i++) {
         underscore.push(' _ ');
-        document.getElementById('guessed').innerHTML= underscore;
+        document.getElementById("guessed").innerHTML= underscore;
     }
 
-    document.getElementById('guessed').innerHTML= underscore.join(' ');
+    document.getElementById("guessed").innerHTML= underscore.join(' ');
     return underscore;
 };
-
-
 
 
     // typing a letter and capturing into  a var (userskey).

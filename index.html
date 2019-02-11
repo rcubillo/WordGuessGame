@@ -1,34 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
 
-<!-- JS connection -->
-<script type="text/javascript" src="assets/javascript/game.js"></script>
-
+    <!-- JS connection -->
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
 
     <!-- css -->
-<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
 
-</head>
+    <!-- css -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"/>
 
-
+    <!-- JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+      integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 <body>
+    <div class="container" id= "full">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4" id= "content">HangMan!!!</h1>
 
+                <div class="card" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                    </div>
+                </div>
 
-<div id="word" > es </div>
+                <div class=" container">
+                    <div class="row">
+                        <div class="col-12-sm">
+                            <h3> Word:</h3>
+                            <div class="guessed"></div>
+                        </div>
+                    </div>
 
-<div id="guessed">  </div>
+                    <div class="row">
+                        <div class="col-12-sm">
+                            <h3> Number of guesses remaining: </h3>
+                            <div id="word"> </div>
+                        </div>
+                    </div>
 
-
-
+                    <div class="row">
+                        <div class="col-12-sm">
+                            <h3>Letters already guessed:</h3>
+                            <div class= ""> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-
 
 </html>
