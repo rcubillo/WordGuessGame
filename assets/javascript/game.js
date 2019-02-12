@@ -3,30 +3,27 @@ var doubleWord = ['a','b','c','d','e','f','g','h','i',
 				  'j','k','l','m','n','o','p','q','r',
 				  's','t','u','v','w','x','y','z'];
 //Array with the words I want the player to guess.
-var wordarray =["zimbabwe","gondwana","soja",];
-
+var wordarray =['zimbabwe','gondwana','soja'];
 //Array with the images.
-var imagesArray = ["assets/images/bob.jpg", "assets/images/gondwana.jpg", "assets/images/soja.jpg"];
-
-//Holds chosenWord
-var chosenWord = "";
+var imagesArray = ['assets/images/bob.jpg', 'assets/images/gondwana.jpg', 'assets/images/soja.jpg'];
+//Holds the word that has been randomly chosen.
+var chosenWord = '';
 //Holds letters in word
 var lettersInWord = [];
-//Holds number of blanks in word
-var blankspaces = 0;
 //Holds Blanks and successful guesses
 var blanksAndSuccesses =[];
 //Holds Wrong guesses
 var wrongLetters = [];
-//Counters
+
+
 var wins = 0;
 var losses = 0;
 var guessesLeft = 9;
 var rightGuessCounter = 0;
+//Holds number of blanks in word
+var blankspaces = 0;
 
 
-//FUNCTIONS
-//----------------------------------------
 function restargame()
 {
 	//Chooses word randombly from the wordarray
@@ -81,12 +78,12 @@ function start()
 	document.getElementById("winCounter").innerHTML = wins;
 	document.getElementById("lossCounter").innerHTML = losses;
     document.getElementById("wrongGuesses").innerHTML = wrongLetters;
-    }
+	}
 }
 
 function compareLetters(userKey) {
-	// console.log('WORKING!');
-	// //If user key exist in choosen word then perform this function
+
+	//If user key exist in choosen word then perform this function
 	if (chosenWord.indexOf(userKey) > -1) {
 		//Loops depending on the amount of blanks
 		for (var i = 0; i < blankspaces; i++) {
@@ -122,7 +119,7 @@ function displayImage() {
 			audioElement.play();
 		}, true);
 
-		document.getElementById("littlemessage").innerHTML = "One good thing about music, when it hits you, you feel no pain.";
+		document.getElementById("message").innerHTML = "One good thing about music, when it hits you, you feel no pain.";
 	}
 
 	if (chosenWord === "gondwana") {
@@ -135,7 +132,7 @@ function displayImage() {
 		audioElement.addEventListener("canplay", function () {
 			audioElement.play();
 		}, true);
-		document.getElementById("littlemessage").innerHTML = "Sentimiento Original.";
+		document.getElementById("message").innerHTML = "Sentimiento Original.";
 	}
 
 	if (chosenWord === "soja") {
@@ -148,14 +145,14 @@ function displayImage() {
 		audioElement.addEventListener("canplay", function () {
 			audioElement.play();
 		}, true);
-		document.getElementById("littlemessage").innerHTML = "Rest of my life.";
+		document.getElementById("message").innerHTML = "Rest of my life.";
 	}
 
 }
 
 function decicion()
 {
-	// When number blanks if filled with right words then you win
+	// var blankspaces is filled with right words then you win
 	if(rightGuessCounter === blankspaces)
 	{
 		//Counts Wins
@@ -177,12 +174,9 @@ function decicion()
 	}
 }
 
-
-//-------------------------------------------
 start();
 
-//This captures the letter that the player types into a variable
-.
+//This captures the letter that the player types into a variable.
 document.onkeyup = function(event)
 {
 	test = true;
