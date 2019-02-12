@@ -141,6 +141,8 @@ function displayImage() {
 		audioElement.addEventListener("canplay", function () {
 			audioElement.play();
 		}, true);
+
+		document.getElementById("littlemessage").innerHTML = "One good thing about music, when it hits you, you feel no pain.";
 	}
 
 	if (choosenWord === "gondwana") {
@@ -153,6 +155,8 @@ function displayImage() {
 		audioElement.addEventListener("canplay", function () {
 			audioElement.play();
 		}, true);
+		document.getElementById("littlemessage").innerHTML = "Sentimiento Original.";
+
 	}
 
 	if (choosenWord === "soja") {
@@ -165,6 +169,8 @@ function displayImage() {
 		audioElement.addEventListener("canplay", function () {
 			audioElement.play();
 		}, true);
+		document.getElementById("littlemessage").innerHTML = "Rest of my life.";
+
 	}
 }
 
