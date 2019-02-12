@@ -1,18 +1,12 @@
-
-//GLOBAL VARIABLES
-//---------------------------------------
 // Used to record how many times a letter can be pressed
-var doubleWord = ['a','b','c',
-				  'd','e','f',
-				  'g','h','i',
-				  'j','k','l',
-				  'm','n','o',
-				  'p','q','r',
-				  's','t','u',
-				  'v','w','x',
-				  'y','z'];
-//Holds the all the words
-var wordBank =["zimbabwe","gondwana","soja",];
+var doubleWord = ['a','b','c','d','e','f','g','h','i',
+				  'j','k','l','m','n','o','p','q','r',
+				  's','t','u','v','w','x','y','z'];
+//Array with the words I want the player to guess.
+var wordarray =["zimbabwe","gondwana","soja",];
+
+//Array with the images.
+var imagesArray = ["assets/images/bob.jpg", "assets/images/gondwana.jpg", "assets/images/soja.jpg"];
 
 //Holds choosenWord
 var choosenWord = "";
@@ -33,8 +27,8 @@ var rightGuessCounter = 0;
 //----------------------------------------
 function reset()
 {
-	//Chooses word randombly from the wordBank
-	choosenWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+	//Chooses word randombly from the wordarray
+	choosenWord = wordarray[Math.floor(Math.random() * wordarray.length)];
 	//Splits the choosen word into individual letters
 	lettersInWord = choosenWord.split('');
 	//Get the number of blanks
@@ -47,22 +41,17 @@ function reset()
 	guessesLeft = 9;
 	wrongLetters =[];
 	blanksAndSuccesses =[];
-	doubleWord = ['a','b','c',
-					  'd','e','f',
-					  'g','h','i',
-					  'j','k','l',
-					  'm','n','o',
-					  'p','q','r',
-					  's','t','u',
-					  'v','w','x',
-					  'y','z'];
+	doubleWord = ['a','b','c','d','e','f','g','h','i',
+				  'j','k','l','m','n','o','p','q','r',
+				  's','t','u','v','w','x','y','z'];
 	test=false;
 	startGame();
 }
+
 function startGame()
 {
-	//Chooses word randombly from the wordBank
-	choosenWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+	//Select a random word from my array.
+	choosenWord = wordarray[Math.floor(Math.random() * wordarray.length)];
 	//Splits the choosen word into individual letters
 	lettersInWord = choosenWord.split('');
 	//Get the number of blanks
@@ -104,82 +93,81 @@ function startGame()
 	console.log(lettersInWord);
 	console.log(numBlanks);
 	console.log(blanksAndSuccesses);
+
 }
 
-function compareLetters(userKey)
-{
-				console.log('WORKING!');
-				//If user key exist in choosen word then perform this function
-				if(choosenWord.indexOf(userKey) > -1)
-				{
-					//Loops depending on the amount of blanks
-					for(var i = 0; i < numBlanks; i++)
-					{
-						//Fills in right index with user key
-						if(lettersInWord[i] === userKey)
-						{
-							rightGuessCounter++;
-							blanksAndSuccesses[i] = userKey;
-							document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join(' ');
-						}
+function compareLetters(userKey) {
+	console.log('WORKING!');
+	//If user key exist in choosen word then perform this function
+	if (choosenWord.indexOf(userKey) > -1) {
+		//Loops depending on the amount of blanks
+		for (var i = 0; i < numBlanks; i++) {
+			//Fills in right index with user key
+			if (lettersInWord[i] === userKey) {
+				rightGuessCounter++;
+				blanksAndSuccesses[i] = userKey;
+				document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join(' ');
+			}
 
-					}
-					//Test / Debug
-					console.log(blanksAndSuccesses);
-				}
-				//Wrong Keys
-				else
-				{
-					wrongLetters.push(userKey);
-					guessesLeft--;
-					//Changes HTML
-					document.getElementById("numGuesses").innerHTML = guessesLeft;
-					document.getElementById("wrongGuesses").innerHTML = wrongLetters;
-					//Test / Debug
-					console.log('Wrong Letters = ' + wrongLetters);
-					console.log('Guesses left are ' + guessesLeft);
-				}
+		}
+		//Test / Debug
+		console.log(blanksAndSuccesses);
+	}
+	//Wrong Keys
+	else {
+		wrongLetters.push(userKey);
+		guessesLeft--;
+		//Changes HTML
+		document.getElementById("numGuesses").innerHTML = guessesLeft;
+		document.getElementById("wrongGuesses").innerHTML = wrongLetters;
+		//Test / Debug
+		console.log('Wrong Letters = ' + wrongLetters);
+		console.log('Guesses left are ' + guessesLeft);
+	}
 }
 
 
 //Display a picture depending on the word selected. This will give a clue to the player.
-function displayImage(){
-//Holds the different pictures
-var imagesArray = ["assets/images/bob.jpg", "assets/images/gondwana.jpg", "assets/images/soja.jpg"];
+function displayImage() {
+	//Holds the different pictures
 
 	if (choosenWord === "zimbabwe") {
+		//Shows a photo associated with the word
 		document.canvas.src = " " + imagesArray[0];
 		//Adding a song when player hits the "clue botton"
 		var audioElement = document.createElement('audio');
 		audioElement.setAttribute("src", "assets/music/zimbabwe.mp3");
 		audioElement.load()
 		audioElement.addEventListener("canplay", function () {
-		audioElement.play();
+			audioElement.play();
 		}, true);
 	}
 
-if (choosenWord === "gondwana"){
-	document.canvas.src = " " + imagesArray[1];
-	//Adding a song when player hits the "clue botton"
-	var audioElement = document.createElement('audio');
+	if (choosenWord === "gondwana") {
+		//Shows a photo associated with the word
+		document.canvas.src = " " + imagesArray[1];
+		//Adding a song when player hits the "clue botton"
+		var audioElement = document.createElement('audio');
 		audioElement.setAttribute("src", "assets/music/gondwana.mp3");
 		audioElement.load()
 		audioElement.addEventListener("canplay", function () {
-		audioElement.play();
+			audioElement.play();
 		}, true);
-}
+	}
 
-if (choosenWord === "soja"){
-	document.canvas.src = " " + imagesArray[2];
+	if (choosenWord === "soja") {
+		//Shows a photo associated with the word
+		document.canvas.src = " " + imagesArray[2];
 		//Adding a song when player hits the "clue botton"
 		var audioElement = document.createElement('audio');
 		audioElement.setAttribute("src", "assets/music/restofmylife.mp3");
 		audioElement.load()
 		audioElement.addEventListener("canplay", function () {
-		audioElement.play();
+			audioElement.play();
 		}, true);
+	}
 }
-}
+
 
 
 
