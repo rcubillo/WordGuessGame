@@ -1,75 +1,191 @@
-// Declaring variables
-var wins = 0;
-var lives = 15;
-var losses = 0;
-var string;
-var answerArray;
+
+//GLOBAL VARIABLES
+//---------------------------------------
+// Used to record how many times a letter can be pressed
+var doubleWord = ['a','b','c',
+				  'd','e','f',
+				  'g','h','i',
+				  'j','k','l',
+				  'm','n','o',
+				  'p','q','r',
+				  's','t','u',
+				  'v','w','x',
+				  'y','z'];
+//Holds the all the words
+var wordBank =["bobmarley","blue","green", "yellow","violet","red","purple"];
+//Holds choosenWord
+var choosenWord = "";
+//Holds letters in word
+var lettersInWord = [];
+//Holds number of blanks in word
 var numBlanks = 0;
+//Holds Blanks and successful guesses
+var blanksAndSuccesses =[];
+//Holds Wrong guesses
+var wrongLetters = [];
+//Counters
+var winCount = 0;
+var loseCount = 0;
+var guessesLeft = 9;
+var rightGuessCounter = 0;
+//FUNCTIONS
+//----------------------------------------
+function reset()
+{
+	//Chooses word randombly from the wordBank
+	choosenWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+	//Splits the choosen word into individual letters
+	lettersInWord = choosenWord.split('');
+	//Get the number of blanks
+	numBlanks = lettersInWord.length;
 
+	//RESET
+	//===========================================================
+	letterGuessed = 0;
+	rightGuessCounter = 0;
+	guessesLeft = 9;
+	wrongLetters =[];
+	blanksAndSuccesses =[];
+	doubleWord = ['a','b','c',
+					  'd','e','f',
+					  'g','h','i',
+					  'j','k','l',
+					  'm','n','o',
+					  'p','q','r',
+					  's','t','u',
+					  'v','w','x',
+					  'y','z'];
+	test=false;
+	startGame();
+}
+function startGame()
+{
+	//Chooses word randombly from the wordBank
+	choosenWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+	//Splits the choosen word into individual letters
+	lettersInWord = choosenWord.split('');
+	//Get the number of blanks
+	numBlanks = lettersInWord.length;
 
+	//RESET
+	//===========================================================
+	rightGuessCounter = 0;
+	guessesLeft = 9;
+	wrongLetters =[];
+	blanksAndSuccesses =[];
+	doubleWord = ['a','b','c',
+					  'd','e','f',
+					  'g','h','i',
+					  'j','k','l',
+					  'm','n','o',
+					  'p','q','r',
+					  's','t','u',
+					  'v','w','x',
+					  'y','z'];
 
-// to store the letters that we already guessed
-var underscore = [];
-var correctwords = [];
-var wrongword = [];
+	//Populate blanks
+	for(var i = 0; i< numBlanks; i++)
+	{
+		blanksAndSuccesses.push('_');
+		document.getElementById('wordToGuess').innerHTML = blanksAndSuccesses;
+	}
 
-//DOM
-var wordunderscore =  document.getElementById("word");
-
-
-
-//array wiht a list of words
-var words = [
-    "index",
-    "sky",
-    "computer",
-    "chino"
-];
-
-//Selecting a random word from my array "word"
-var choosenwords = words[Math.floor(Math.random() * words.length)];
-console.log(choosenwords);
-
-
-
-//this function will change the letter to underscore depending of the lenght of the word.
-function starting() {
-    for (var i = 0; i < choosenwords.length; i++) {
-        underscore.push(' _ ');
-        document.getElementById("guessed").innerHTML= underscore;
+    //Changes HTML
+    window.onload = function loadword(){
+	document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join(' ');
+	document.getElementById("numGuesses").innerHTML = guessesLeft;
+	document.getElementById("winCounter").innerHTML = winCount;
+	document.getElementById("lossCounter").innerHTML = loseCount;
+    document.getElementById("wrongGuesses").innerHTML = wrongLetters;
     }
+	// Testing / Debugging
+	console.log(choosenWord);
+	console.log(lettersInWord);
+	console.log(numBlanks);
+	console.log(blanksAndSuccesses);
+}
 
-    document.getElementById("guessed").innerHTML= underscore.join(' ');
-    return underscore;
-};
+function compareLetters(userKey)
+{
+				console.log('WORKING!');
+				//If user key exist in choosen word then perform this function
+				if(choosenWord.indexOf(userKey) > -1)
+				{
+					//Loops depending on the amount of blanks
+					for(var i = 0; i < numBlanks; i++)
+					{
+						//Fills in right index with user key
+						if(lettersInWord[i] === userKey)
+						{
+							rightGuessCounter++;
+							blanksAndSuccesses[i] = userKey;
+							document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join(' ');
+						}
+					}
+					//Test / Debug
+					console.log(blanksAndSuccesses);
+				}
+				//Wrong Keys
+				else
+				{
+					wrongLetters.push(userKey);
+					guessesLeft--;
+					//Changes HTML
+					document.getElementById("numGuesses").innerHTML = guessesLeft;
+					document.getElementById("wrongGuesses").innerHTML = wrongLetters;
+					//Test / Debug
+					console.log('Wrong Letters = ' + wrongLetters);
+					console.log('Guesses left are ' + guessesLeft);
+				}
 
 
-    // typing a letter and capturing into  a var (userskey).
-    document.onkeyup = function (event) {
-        var userskey = event.key;
-        // Loop so that when user types a letter it will clasify if the letter is from the choosen word it will
-        // get store in an array, if not it will be assign into another array.
-        if (choosenwords.indexOf(userskey) > -1) {
-            // adding the correct letters to the "correct array"e
-            correctwords.push(userskey);
-            // this will replace the undercore with the correct letter.
-            underscore[choosenwords.indexOf(userskey)] = userskey;
-            if (underscore.join('') == choosenwords) {
 
-                alert("You win");
-            }
-            console.log(underscore);
+}
+function winLose()
+{
+	// When number blanks if filled with right words then you win
+	if(rightGuessCounter === numBlanks)
+	{
+		//Counts Wins
+		winCount++;
+		//Changes HTML
+		document.getElementById("winCounter").innerHTML = winCount;
+		alert('You Win');
+		reset();
+	}
+	// When number of Guesses reaches 0 then You lose
+	else if(guessesLeft === 0)
+	{
+		//Counts losses
+		loseCount++;
+		//Changes HTML
+		document.getElementById("lossCounter").innerHTML = loseCount;
+		alert("You Lose");
+		reset();
+	}
+}
 
-            //console.log(correctwords);
-        } else {
-            //adding the wrong letters to the "wrong array"
-            wrongword.push(userskey)
-            console.log(wrongword);
-        }
-    }
+//MAIN PROCCESS
+//-------------------------------------------
+//Initiates the Code
+startGame();
 
+document.onkeyup = function(event)
+{
+	test = true;
+	var letterGuessed = event.key;
+	for(var i = 0; i < doubleWord.length; i++)
+	{
+		if(letterGuessed === doubleWord[i] && test === true)
+		{
+			var spliceDword = doubleWord.splice(i,1);
+			//Test / Debug
+			console.log('Double word is = ' + doubleWord[i])
+			console.log('Spliced Word is = ' + spliceDword);
 
-//showing the undercore word into the dom
-window.onload = function loadword(){
-    document.getElementById("word").innerHTML = starting();
-    };
+			compareLetters(letterGuessed);
+			winLose();
+		}
+	}
+}
+
