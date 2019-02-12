@@ -1,4 +1,3 @@
-
 // Used to record how many times a letter can be pressed
 var doubleWord = ['a','b','c','d','e','f','g','h','i',
 				  'j','k','l','m','n','o','p','q','r',
@@ -49,6 +48,8 @@ function restargame()
 	start();
 }
 
+
+
 function start()
 {
 	//Select a random word from my array.
@@ -57,8 +58,6 @@ function start()
 	lettersInWord = chosenWord.split('');
 	//Get the number of blanks
 	blankspaces = lettersInWord.length;
-
-
 	//===========================================================
 	rightGuessCounter = 0;
 	guessesLeft = 9;
@@ -97,7 +96,6 @@ function compareLetters(userKey) {
 				blanksAndSuccesses[i] = userKey;
 				document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join(' ');
 			}
-
 		}
 	}
 	//Using .push to send letters to the empty array that will hold them.
