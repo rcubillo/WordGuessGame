@@ -12,7 +12,8 @@ var doubleWord = ['a','b','c',
 				  'v','w','x',
 				  'y','z'];
 //Holds the all the words
-var wordBank =["bobmarley","blue","green", "yellow","violet","red","purple"];
+var wordBank =["zimbabwe","gondwana","soja",];
+
 //Holds choosenWord
 var choosenWord = "";
 //Holds letters in word
@@ -121,6 +122,7 @@ function compareLetters(userKey)
 							blanksAndSuccesses[i] = userKey;
 							document.getElementById("wordToGuess").innerHTML = blanksAndSuccesses.join(' ');
 						}
+
 					}
 					//Test / Debug
 					console.log(blanksAndSuccesses);
@@ -137,10 +139,34 @@ function compareLetters(userKey)
 					console.log('Wrong Letters = ' + wrongLetters);
 					console.log('Guesses left are ' + guessesLeft);
 				}
-
-
-
 }
+
+
+//Display a picture depending on the word selected. This will give a clue to the player.
+function displayImage(){
+//Holds the different pictures
+var imagesArray = ["assets/images/bob.jpg", "assets/images/gondwana.jpg", "assets/images/soja.jpg"];
+
+	if (choosenWord === "zimbabwe") {
+		document.canvas.src = " " + imagesArray[0];
+		var audioElement = document.createElement('audio');
+		audioElement.setAttribute('src', 'assets/music/zimbabwe.mp3');
+		audioElement.load()
+		audioElement.addEventListener("canplay", function () {
+		audioElement.play();
+		}, true);
+	}
+
+if (choosenWord === "gondwana"){
+	document.canvas.src = " " + imagesArray[1];
+}
+if (choosenWord === "soja"){
+	document.canvas.src = " " + imagesArray[2];
+}
+}
+
+
+
 function winLose()
 {
 	// When number blanks if filled with right words then you win

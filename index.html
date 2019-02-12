@@ -27,13 +27,21 @@
             <div class="container">
                 <h1 class="display-4" id= "content">HangMan!!!</h1>
 
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                    </div>
-                </div>
+                <form name="imageForm">
+                    <table border=3>
+                    <tr>
+                      <td>
+                        <input onclick="displayImage();" type=button id="clueButton" value="Clue">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img src="" name="canvas" />
+                      </td>
+                    </tr>
+                    </table>
+                  </form>
+
 
                 <div class=" container">
                     <div class="row">
@@ -70,12 +78,12 @@
                             <div id= "wrongGuesses">P </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
     </div>
+
+    <audio id="demo1" src="assets/music/zimbabwe.mp3"></audio>
 
 
     <!-- JS connection -->
