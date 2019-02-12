@@ -181,11 +181,12 @@ function decicion()
 //-------------------------------------------
 start();
 
-//This captures the letter that the player types.
+//This captures the letter that the player types into a variable
+.
 document.onkeyup = function(event)
 {
 	test = true;
-	var letterGuessed = event.key;
+	var letterGuessed = event.key.toLowerCase();
 	for(var i = 0; i < doubleWord.length; i++)
 	{
 		if(letterGuessed === doubleWord[i] && test === true)
