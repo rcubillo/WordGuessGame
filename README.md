@@ -10,7 +10,7 @@
 
 ## About
 
-- This is the hangman game. The idea of this game is to guess the word by typing different letters. You will have a few intents before the game over. 
+- This is the hangman game. The idea of this game is to guess the word by typing different letters. You will have a few intents before the game over. The theme for this game is the reggae. 
 
 ## License
 
@@ -18,7 +18,7 @@
 
 ## How-to use this code
 
-- This is simple JavaScript game. Peoople can open this code in their browser of preference.
+- This is simple HTML-CSS-JavaScript game. This app will run in the browser.
 
 ## Contributing Guidelines
 
