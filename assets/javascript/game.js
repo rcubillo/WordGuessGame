@@ -46,55 +46,25 @@ function structure (){
 
 function restargame()
 {
-	structure();
-	// //Chooses word randombly from the wordarray
-	// chosenWord = wordarray[Math.floor(Math.random() * wordarray.length)];
-	// //Splits the choosen word into individual letters
-	// lettersInWord = chosenWord.split('');
-	// //Get the number of blanks
-	// blankspaces = lettersInWord.length;
-	// //===========================================================
-	// letterGuessed = 0;
-	// rightGuessCounter = 0;
-	// guessesLeft = 9;
-	// wrongLetters =[];
-	// blanksAndSuccesses =[];
-	// doubleWord = ['a','b','c','d','e','f','g','h','i',
-	// 			  'j','k','l','m','n','o','p','q','r',
-	// 			  's','t','u','v','w','x','y','z'];
 	test=false;
-
-
+	//making the song stops everytime there is a restart.
 	audioElement.pause();
-
+	//going back to the original picture when when
 	document.canvas.src = 'assets/images/reggae.png';
 
 	start();
 	// displayImage();
+
+	structure();
 }
 
 
 
 function start()
 {
+//Populate blanks
 	structure();
 
-	// //Select a random word from my array.
-	// chosenWord = wordarray[Math.floor(Math.random() * wordarray.length)];
-	// //.split will separate the selected word into individual letters.
-	// lettersInWord = chosenWord.split('');
-	// //Get the number of blanks
-	// blankspaces = lettersInWord.length;
-	// //===========================================================
-	// rightGuessCounter = 0;
-	// guessesLeft = 9;
-	// wrongLetters =[];
-	// blanksAndSuccesses =[];
-	// doubleWord = ['a','b','c','d','e','f','g','h','i',
-	// 			  'j','k','l','m','n','o','p','q','r',
-	// 			  's','t','u','v','w','x','y','z'];
-
-	//Populate blanks
 	for(var i = 0; i< blankspaces; i++)
 	{
 		blanksAndSuccesses.push('_');
@@ -143,7 +113,6 @@ function displayImage() {
 		document.canvas.src = " " + imagesArray[0];
 		//Adding a song when player hits the "clue botton"
 		// var audioElement = document.createElement('audio');
-		console.log(audioElement);
 		audioElement.setAttribute("src", "assets/music/zimbabwe.mp3");
 		audioElement.load()
 		audioElement.addEventListener("canplay", function () {
@@ -205,6 +174,7 @@ function decicion()
 		restargame();
 	}
 }
+
 
 start();
 
