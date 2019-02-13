@@ -112,7 +112,6 @@ function displayImage() {
 		//Shows a photo associated with the word
 		document.canvas.src = " " + imagesArray[0];
 		//Adding a song when player hits the "clue botton"
-		// var audioElement = document.createElement('audio');
 		audioElement.setAttribute("src", "assets/music/zimbabwe.mp3");
 		audioElement.load()
 		audioElement.addEventListener("canplay", function () {
@@ -126,7 +125,6 @@ function displayImage() {
 		//Shows a photo associated with the word
 		document.canvas.src = " " + imagesArray[1];
 		//Adding a song when player hits the "clue botton"
-		// var audioElement = document.createElement('audio');
 		audioElement.setAttribute("src", "assets/music/gondwana.mp3");
 		audioElement.load()
 		audioElement.addEventListener("canplay", function () {
@@ -141,7 +139,7 @@ function displayImage() {
 		document.canvas.src = " " + imagesArray[2];
 		//Adding a song when player hits the "clue botton"
 		audioElement = document.createElement('audio');
-		audioElement.setAttribute("src", "assets/music/gondwana.mp3");
+		audioElement.setAttribute("src", "assets/music/restofmylife.mp3");
 		audioElement.load()
 		audioElement.addEventListener("canplay", function () {
 			audioElement.play();
