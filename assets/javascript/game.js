@@ -23,9 +23,10 @@ var rightGuessCounter = 0;
 //Holds number of blanks in word
 var blankspaces = 0;
 
+var audioElement = document.createElement('audio');
 
-function restargame()
-{
+
+function structure (){
 	//Chooses word randombly from the wordarray
 	chosenWord = wordarray[Math.floor(Math.random() * wordarray.length)];
 	//Splits the choosen word into individual letters
@@ -41,28 +42,57 @@ function restargame()
 	doubleWord = ['a','b','c','d','e','f','g','h','i',
 				  'j','k','l','m','n','o','p','q','r',
 				  's','t','u','v','w','x','y','z'];
+}
+
+function restargame()
+{
+	structure();
+	// //Chooses word randombly from the wordarray
+	// chosenWord = wordarray[Math.floor(Math.random() * wordarray.length)];
+	// //Splits the choosen word into individual letters
+	// lettersInWord = chosenWord.split('');
+	// //Get the number of blanks
+	// blankspaces = lettersInWord.length;
+	// //===========================================================
+	// letterGuessed = 0;
+	// rightGuessCounter = 0;
+	// guessesLeft = 9;
+	// wrongLetters =[];
+	// blanksAndSuccesses =[];
+	// doubleWord = ['a','b','c','d','e','f','g','h','i',
+	// 			  'j','k','l','m','n','o','p','q','r',
+	// 			  's','t','u','v','w','x','y','z'];
 	test=false;
+
+
+	audioElement.pause();
+
+	document.canvas.src = 'assets/images/reggae.png';
+
 	start();
+	// displayImage();
 }
 
 
 
 function start()
 {
-	//Select a random word from my array.
-	chosenWord = wordarray[Math.floor(Math.random() * wordarray.length)];
-	//.split will separate the selected word into individual letters.
-	lettersInWord = chosenWord.split('');
-	//Get the number of blanks
-	blankspaces = lettersInWord.length;
-	//===========================================================
-	rightGuessCounter = 0;
-	guessesLeft = 9;
-	wrongLetters =[];
-	blanksAndSuccesses =[];
-	doubleWord = ['a','b','c','d','e','f','g','h','i',
-				  'j','k','l','m','n','o','p','q','r',
-				  's','t','u','v','w','x','y','z'];
+	structure();
+
+	// //Select a random word from my array.
+	// chosenWord = wordarray[Math.floor(Math.random() * wordarray.length)];
+	// //.split will separate the selected word into individual letters.
+	// lettersInWord = chosenWord.split('');
+	// //Get the number of blanks
+	// blankspaces = lettersInWord.length;
+	// //===========================================================
+	// rightGuessCounter = 0;
+	// guessesLeft = 9;
+	// wrongLetters =[];
+	// blanksAndSuccesses =[];
+	// doubleWord = ['a','b','c','d','e','f','g','h','i',
+	// 			  'j','k','l','m','n','o','p','q','r',
+	// 			  's','t','u','v','w','x','y','z'];
 
 	//Populate blanks
 	for(var i = 0; i< blankspaces; i++)
@@ -112,7 +142,8 @@ function displayImage() {
 		//Shows a photo associated with the word
 		document.canvas.src = " " + imagesArray[0];
 		//Adding a song when player hits the "clue botton"
-		var audioElement = document.createElement('audio');
+		// var audioElement = document.createElement('audio');
+		console.log(audioElement);
 		audioElement.setAttribute("src", "assets/music/zimbabwe.mp3");
 		audioElement.load()
 		audioElement.addEventListener("canplay", function () {
@@ -126,7 +157,7 @@ function displayImage() {
 		//Shows a photo associated with the word
 		document.canvas.src = " " + imagesArray[1];
 		//Adding a song when player hits the "clue botton"
-		var audioElement = document.createElement('audio');
+		// var audioElement = document.createElement('audio');
 		audioElement.setAttribute("src", "assets/music/gondwana.mp3");
 		audioElement.load()
 		audioElement.addEventListener("canplay", function () {
@@ -136,11 +167,12 @@ function displayImage() {
 	}
 
 	if (chosenWord === "soja") {
+		console.log('in soja');
 		//Shows a photo associated with the word
 		document.canvas.src = " " + imagesArray[2];
 		//Adding a song when player hits the "clue botton"
-		var audioElement = document.createElement('audio');
-		audioElement.setAttribute("src", "assets/music/restofmylife.mp3");
+		audioElement = document.createElement('audio');
+		audioElement.setAttribute("src", "assets/music/gondwana.mp3");
 		audioElement.load()
 		audioElement.addEventListener("canplay", function () {
 			audioElement.play();
